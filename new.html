@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1">    
+    <title>Calulator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500&family=Source+Code+Pro:wght@700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+    <style>
+      #Calculator-1{
+        display: none;
+      }
+      #Calculator-2{
+        display:none;
+      }
+      #Calculator-three{
+        display:none;
+      }
+      @media screen and (max-width: 954px) {
+        .container {
+          grid-template-columns: repeat(3, 1fr);
+      
+        }
+        .wrapper-one{
+        
+          width:100%;
+          
+        }
+        button{
+          font-size: large;
+        }
+        .slider input{
+          width:100%;
+        }
+        .slider{
+          
+        }
+        .header-pricing{
+          font-size: small;
+        }
+      }
+        .slider input{
+            -webkit-appearance: none;
+            background:rgb(105, 190, 236);
+            height: 8px;
+            border-radius: 20px;
+            width:60%;
+            cursor:pointer;
+            
+
+        }
+        .slider input::-moz-range-thumb{
+          -webkit-appearance: none;
+            
+            background: linear-gradient(85.19deg,#ff2a64 -133.27%,#ffaf48 105.93%); 
+            width:22px;
+            height: 22px;
+            border-radius: 5px;
+        }
+        
+        .slider input::-webkit-slider-thumb{
+          -webkit-appearance: none;
+            
+            background: linear-gradient(85.19deg,#ff2a64 -133.27%,#ffaf48 105.93%); 
+            width:22px;
+            height: 22px;
+            border-radius: 5px;
+        }
+        .slider input::-ms-thumb{
+          -webkit-appearance: none;
+            
+            background: linear-gradient(85.19deg,#ff2a64 -133.27%,#ffaf48 105.93%); 
+            width: 22px;
+            height: 22px;
+            border-radius: 5px;
+        }
+        ::before{
+        background-color: greenyellow;
+        }
+        .header-pricing{
+            text-align: center;
+            text-decoration: wavy;
+            font-size: medium;
+        }
+        .wrapper-one{
+            display: flex;
+            justify-content: space-between;
+            align-content: center;
+            line-height: 100px;
+            width:60%;
+            font-size: medium;
+            height: 100px;
+            
+        }
+        .wrapper-one p{
+            line-height:36px;
+            padding-top: 28px;
+            font-family: 'Caveat', cursive;
+            font-family: 'Source Code Pro', monospace;
+        }
+        #demo{
+        height: 100px;
+  line-height: 100px; 
+  text-decoration-color: rgb(7, 7, 83);  
+  text-decoration: solid;
+            
+        }
+        #demo{
+            height: 100px;
+            line-height: 100px;
+            text-decoration:solid;
+      text-decoration-color: rgb(7, 7, 83);  
+
+        }
+        #demo-two{
+          height: 100px;
+          line-height: 100px;
+          text-decoration:solid;
+    text-decoration-color: rgb(7, 7, 83);  
+
+        }
+      #demo-three{
+          height: 100px;
+          line-height: 100px;
+          text-decoration:solid;
+    text-decoration-color: rgb(7, 7, 83);  
+
+        }
+        .main-wrapper{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .header-pricing{
+          padding-top:30px;
+
+        }
+        .grid-layout{
+          display:grid;
+
+        }
+        .grid-row-1{
+          grid-row: 1;
+          grid-column: 1;
+        }
+        .grid-row-2{
+          grid-row: 1;
+          grid-column: 2;
+        }
+        .grid-row2-1{
+          grid-row: 2;
+          grid-column: 1;
+        }
+        .grid-row2-2{
+          grid-row: 2;
+          grid-column: 2;
+        }
+        .slide-two{
+          margin-left:200px;
+        }
+        body {
+          background-image: url('backdrop.jpg');
+          background-repeat: no-repeat;
+          background-size: cover;
+          background-color: #b946a5;
+          
+  
+  
+  z-index: -1;
+        }
+    .modal-class-email{
+      margin-top:10px;
+    }
+    </style>
+</head>
+<body>
+    <div class="header-pricing"><h2 class="header">Calculate your monthly bill</h2>
+<div class="container-md">
+
+<p>Drag the slider to display the current value.</p>
+<div class="btn-group-" role="group" aria-label="Basic outlined example">
+<button id="submit" class="btn btn-primary round">submit</button>
+<button id="calc-btn-1" class="btn btn-primary round">Calulator 1</button>
+<button id="calc-btn-2" class="btn btn-primary round"> Calculator 2</button>
+<button id="calc-btn-3" class="btn btn-primary round">Calculator 3</button>
+</div>
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+  Launch static backdrop modal
+</button>
+
+<!-- Modal -->
+
+
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="staticBackdropLabel">Fill this form</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+    <form id="myForm" action="/submit-form" method="POST">
+
+        <div class="row">
+          <div class="col">
+            <input type="text" name="name" class="form-control" placeholder="First name" aria-label="First name" required>
+          </div>
+          <div class="col">
+            <input type="text" name="lastname" class="form-control" placeholder="Last name" aria-label="Last name "required >
+          </div>
+        </div>
+                
+        <div class="input-group mb-3 modal-class-email ">
+          <input type="text" class="form-control" name="emailid" placeholder="Email Address" aria-label="Email" required>
+        </div>
+        
+<input type="text"placeholder="Phone Number" id="inputPassword5" class="form-control" aria-labelledby="passwordHelpBlock">
+
+
+        <div class="input-group">
+          <span class="input-group-text">Any queries</span>
+                  <textarea class="form-control" aria-label="With textarea"></textarea>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <input type="submit" class="btn btn-secondasy" value="Submit">
+      </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="Calculator-1">
+<div class="slider">
+
+ <div class="main-wrapper"><div class="wrapper-one"><p>Instagram Highlights : </p> <span id="demo"></span></div> </div>
+  <input type="range" min="0" max="20" step="1" value="1" class="slide-one" id="myRange-one">
+  
+
+ <div class="main-wrapper"><div class="wrapper-one"><p>Profile Picture : </p> <span id="demo-two"></span></div> </div>
+  <input type="range" min="0" max="20" step="1" value="1" class="slide-one" id="myRange-two">
+  
+
+ <div class="main-wrapper"><div class="wrapper-one"><p>Email banner : </p> <span id="demo-three"></span></div> </div>
+  <input type="range" min="0" max="20" step="1" value="1" class="slide-one" id="myRange-three">
+ 
+
+ <div class="main-wrapper"><div class="wrapper-one"><p>Cover Image : </p> <span id="demo-four"></span></div> </div>
+  <input type="range" min="0" max="20" step="1" value="1" class="slide-one" id="myRange-four">
+ 
+ <div class="main-wrapper"><div class="wrapper-one"><p>Creatives : </p> <span id="demo-five"></span></div> </div>
+  <input type="range" min="0" max="20"  step="1" value="1" class="slide-three" id="myRange-five">
+  <p class="package">Standard Package: <span id="calc"></span></p>
+</div>
+</div>
+<div id="Calculator-2" >
+
+
+<div class="slider container">
+  <div class="grid-layout">
+
+ <div class="main-wrapper grid-row-1"><div class="wrapper-one"><p>Text & Graphic Animated Reels : </p> <span id="calc2-demo"></span></div> </div>
+  <input type="range" min="0" max="20" value="1" class="slide-one grid-row2-1" style="margin-left: 120px;" id="calc2-myRange-one">
+  
+  <div class="main-wrapper grid-row-2"><div class="wrapper-two"><p>Video length : </p> <span id="calc2-demo-two"></span></div></div>
+<input type="range" min="0" max="60" value="1" class="main-wrapper slide-two grid-row2-2" style="margin-left: 120px;" id="calc2-myRange-two">
+
+</div>
+
+  <p id="first-calc">&#x20B9; </p>
+  
+  <div class="grid-layout">
+
+ <div class="main-wrapper grid-row-1"><div class="wrapper-one"><p>Digital animated Ad : </p> <span id="calc2-demo-2"></span></div> </div>
+  <input type="range" min="0" max="20" value="1" class="slide-one grid-row2-1" style="margin-left: 120px;" id="calc2-myRange-2">
+  
+  <div class="main-wrapper grid-row-2"><div class="wrapper-two"><p>Video length : </p> <span id="calc2-demo-twoo"></span></div></div>
+<input type="range" min="0" max="60" value="1" class="main-wrapper slide-two grid-row2-2" style="margin-left: 120px;" id="calc2-myRange-twoo">
+
+</div>
+  <p id="second-calc">&#x20B9; </p>
+
+
+
+
+
+  <div class="grid-layout">
+
+ <div class="main-wrapper grid-row-1"><div class="wrapper-one"><p>3D product video / process video : </p> <span id="calc2-demo-3"></span></div> </div>
+  <input type="range" min="0" max="20" value="1" class="slide-one grid-row2-1" style="margin-left: 120px;" id="calc2-myRange-3">
+  
+  <div class="main-wrapper grid-row-2"><div class="wrapper-two"><p>Video length: </p> <span id="calc2-demo-three"></span></div></div>
+<input type="range" min="0" max="60" value="1" class="main-wrapper slide-two grid-row2-2" style="margin-left: 120px;" id="calc2-myRange-three">
+
+</div>
+  <p id="third-calc">&#x20B9; </p>
+
+  <p class="package">Standard Package: <p id="calc2"></p></p>
+
+
+
+
+
+</div>
+
+</div>
+
+
+
+
+
+
+<div id="Calculator-three">
+
+
+
+<div class="slider">
+
+ <div class="main-wrapper"><div class="wrapper-one"><p>4k shoot(8hr): </p> <span id="calc3-demo"></span></div> </div>
+  <input type="range" min="0" max="20" value="500" class="slide-one" id="calc3-myRange-one">
+  
+  <div class="main-wrapper"><div class="wrapper-one"><p>At Location /in-store reels shooting(4hrs): </p> <span id="calc3-demo-two"></span></div></div>
+<input type="range" min="0" max="20" step="1" value="1" class="slide-one" id="calc3-myRange-two">
+
+
+ <div class="main-wrapper"><div class="wrapper-one"><p>4k shoot on croma + edit: </p> <span id="calc3-demo-3"></span></div> </div>
+  <input type="range" min="0" max="20"  step="1" value="1" class="slide-three" id="calc3-myRange-three">
+
+
+ <div class="main-wrapper"><div class="wrapper-one"><p>4k shoot on croma + edit(portable): </p> <span id="calc3-demo-4"></span></div> </div>
+  <input type="range" min="0" max="20"  step="1" value="1" class="slide-three" id="calc3-myRange-four">
+  <p class="package">Standard Package: <span id="calc3"></span></p>
+</div>
+
+</div>
+</div>
+
+<script src="script.js"></script>
+</body>
+
+</html>
