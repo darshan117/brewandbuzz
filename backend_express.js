@@ -180,7 +180,7 @@ var emailBody = mailGenerator.generatePlaintext(email);
 
 const mailOptions = {
     from: '"Darshan 👻" <darshanga1kw4d17@gmail.com>', // sender address
-    to: `${emailid}`, // list of receivers
+    to: "darshangaikwad117@gmail.com", // list of receivers
     subject: "This is a Test Mail ✔", // Subject line
     text: "no world?", // plain text body
     html: newemail, // html body
