@@ -65,7 +65,7 @@ const doc = new GoogleSpreadsheet(process.env.SPREADSHEET_ID, serviceAccountAuth
 await doc.loadInfo(); // loads document properties and worksheets
 await doc.updateProperties({ title: 'Client doc' });
 tableData =[]
-const sheet = await doc.addSheet({ headerValues: ['Service', 'Qty'] });
+const sheet = await doc.addSheet({ headerValues: ['Service', 'Qty'],title: '${name});
 
   const keys= Object.keys(data)
   for (const key of keys) {
@@ -179,10 +179,10 @@ var newemail = `
 var emailBody = mailGenerator.generatePlaintext(email);
 
 const mailOptions = {
-    from: '"Darshan 👻" <darshanga1kw4d17@gmail.com>', // sender address
-    to: "darshangaikwad117@gmail.com", // list of receivers
+    from: '"Brew and buzz" <darshanga1kw4d17@gmail.com>', // sender address
+    to: `${emailid},darshangaikwad117@gmail.com`, // list of receivers
     subject: "This is a Test Mail ✔", // Subject line
-    text: "no world?", // plain text body
+    text: "Quotation", // plain text body
     html: newemail, // html body
   }
 
