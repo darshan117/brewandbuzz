@@ -65,7 +65,7 @@ const doc = new GoogleSpreadsheet(process.env.SPREADSHEET_ID, serviceAccountAuth
 await doc.loadInfo(); // loads document properties and worksheets
 await doc.updateProperties({ title: 'Client doc' });
 tableData =[]
-const sheet = await doc.addSheet({ headerValues: ['Service', 'Qty'],title: '${name});
+const sheet = await doc.addSheet({ headerValues: ['Service', 'Qty'],title: `${name}`);
 
   const keys= Object.keys(data)
   for (const key of keys) {
