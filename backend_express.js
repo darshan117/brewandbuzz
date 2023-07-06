@@ -47,12 +47,13 @@ app.post("/path/to/server", (req, res) => {
   newfunc(sliderData);
 });
 let name_client;
+let emailid;
 app.use(bodyParser.urlencoded({ extended: false }));
 app.post("/submit-form", (req, res) => {
   name_client = req.body.name;
-  const emailid = req.body.emailid;
+  emailid = req.body.emailid;
   // Extract the slider values from the request body
-  console.log(name+" " +emailid); // Do whatever you want with the data
+  console.log(name_client+" " +emailid); // Do whatever you want with the data
   
   res.sendStatus(200); 
 });
