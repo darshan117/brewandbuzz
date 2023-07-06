@@ -37,7 +37,25 @@ var mailGenerator = new Mailgen({
     }
 });
 
-
+  app.use(express.json())
+app.post("/path/to/server", (req, res) => {
+  const sliderData = req.body;
+  // Extract the slider values from the request body
+  console.log(sliderData); // Do whatever you want with the data
+  
+  res.sendStatus(200); // S
+  newfunc(sliderData);
+});
+let name_client;
+app.use(bodyParser.urlencoded({ extended: false }));
+app.post("/submit-form", (req, res) => {
+  name_client = req.body.name;
+  const emailid = req.body.emailid;
+  // Extract the slider values from the request body
+  console.log(name+" " +emailid); // Do whatever you want with the data
+  
+  res.sendStatus(200); 
+});
 
 
 
@@ -65,7 +83,7 @@ const doc = new GoogleSpreadsheet(process.env.SPREADSHEET_ID, serviceAccountAuth
 await doc.loadInfo(); // loads document properties and worksheets
 await doc.updateProperties({ title: 'Client doc' });
 tableData =[]
-const sheet = await doc.addSheet({ headerValues: ['Service', 'Qty'],title: `${name}`});
+const sheet = await doc.addSheet({ headerValues: ['Service', 'Qty'],title: `${name_client}`});
 
   const keys= Object.keys(data)
   for (const key of keys) {
@@ -203,24 +221,7 @@ app.use((req, res, next) => {
     next();
   });
 
-  app.use(express.json())
-app.post("/path/to/server", (req, res) => {
-  const sliderData = req.body;
-  // Extract the slider values from the request body
-  console.log(sliderData); // Do whatever you want with the data
-  
-  res.sendStatus(200); // S
-  newfunc(sliderData);
-});
-app.use(bodyParser.urlencoded({ extended: false }));
-app.post("/submit-form", (req, res) => {
-  const name = req.body.name;
-  const emailid = req.body.emailid;
-  // Extract the slider values from the request body
-  console.log(name+" " +emailid); // Do whatever you want with the data
-  
-  res.sendStatus(200); 
-});
+
 // Start the server
 app.listen(3000, () => {
   console.log("Server is running on port 3000");
