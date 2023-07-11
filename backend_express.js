@@ -12,8 +12,8 @@ const { JWT } = require('google-auth-library');
 const nodemailer = require("nodemailer");
 const newtp = "time pass"
 const transporter = nodemailer.createTransport({
-  host: "smtp.forwardemail.net",
-  port: 465,
+  host: "smtppro.zoho.in",
+  port: 587,
   secure: true,
   auth: {
     // TODO: replace `user` and `pass` values from <https://forwardemail.net>
