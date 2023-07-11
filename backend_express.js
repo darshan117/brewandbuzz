@@ -36,6 +36,13 @@ var mailGenerator = new Mailgen({
         // logo: 'https://mailgen.js/img/logo.png'
     }
 });
+app.use((req, res, next) => {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+    next();
+  });
+
 
   app.use(express.json())
 app.post("/path/to/server", (req, res) => {
@@ -47,11 +54,15 @@ app.post("/path/to/server", (req, res) => {
   newfunc(sliderData);
 });
 let name_client;
-let emailid;
+let email_id;
+let last_name;
+let phone_number;
 app.use(bodyParser.urlencoded({ extended: false }));
 app.post("/submit-form", (req, res) => {
   name_client = req.body.name;
-  emailid = req.body.emailid;
+  last_name = req.body.lastname;
+  email_id = req.body.emailid;
+  phone_number= req.body.mobile_number;
   // Extract the slider values from the request body
   console.log(name_client+" " +emailid); // Do whatever you want with the data
   
@@ -101,6 +112,10 @@ const sheet = await doc.addSheet({ headerValues: ['Service', 'Qty'],title: `${na
     // Do something with the value
     // ...
   };
+await sheet.addRow({Service:"EmailId ",Qty:`${email_id}`})
+await sheet.addRow({Service:"phone ",Qty:`${phone_number}`})
+
+await sheet.addRow({Service:"Name",Qty:`${name_client}`})
   console.log(tableData)
 
   let tableRows = '';
@@ -182,7 +197,7 @@ var newemail = `
 </head>
 <body>
   <div class="card">
-    <h2>Email Template</h2>
+    <h2>Welcome to Brew and Buzz .We're very exicted to have you on board</h2>
     
     <table class="table">
     ${tableRows}
@@ -215,13 +230,6 @@ const info = transporter.sendMail(mailOptions).then(()=>{
 
 // append rows
 // This is a middleware to parse the json object
-app.use((req, res, next) => {
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
-    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
-    next();
-  });
-
 
 // Start the server
 app.listen(3000, () => {
