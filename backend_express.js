@@ -12,7 +12,7 @@ const { JWT } = require('google-auth-library');
 const nodemailer = require("nodemailer");
 const newtp = "time pass"
 const transporter = nodemailer.createTransport({
-  host: "smtppro.zoho.in",
+  host: "smtp.zoho.in",
   port: 465,
   secure: true,
   auth: {
