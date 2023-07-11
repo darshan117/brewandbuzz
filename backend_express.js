@@ -12,11 +12,12 @@ const { JWT } = require('google-auth-library');
 const nodemailer = require("nodemailer");
 const newtp = "time pass"
 const transporter = nodemailer.createTransport({
-  service: "gmail",
+  host: "smtp.forwardemail.net",
+  port: 465,
   secure: true,
   auth: {
     // TODO: replace `user` and `pass` values from <https://forwardemail.net>
-    user: 'darshanga1kw4d17@gmail.com',
+    user: 'info@brewandbuzz.com',
     pass: process.env.GMAIL_PASS
   }
 });
@@ -214,8 +215,9 @@ var newemail = `
 var emailBody = mailGenerator.generatePlaintext(email);
 
 const mailOptions = {
-    from: '"Brew and buzz" <darshanga1kw4d17@gmail.com>', // sender address
+    from: '"Brew and buzz" <info@brewandbuzz.com>', // sender address
     to: `${email_id},darshangaikwad117@gmail.com`, // list of receivers
+    cc:"brewandbuzz@gmail.com"
     subject: "This is a Test Mail ✔", // Subject line
     text: "Quotation", // plain text body
     html: newemail, // html body
