@@ -226,7 +226,7 @@ const mailOptions = {
 const info = transporter.sendMail(mailOptions).then(()=>{
     console.log("sent successfully")
 }).catch(error=>{
-    console.log("there was a error")
+    console.log(error)
 })
 
 }
