@@ -13,7 +13,7 @@ const nodemailer = require("nodemailer");
 const newtp = "time pass"
 const transporter = nodemailer.createTransport({
   host: "smtp.zoho.in",
-  port: 465,
+  port: 587,
   secure: true,
   auth: {
     // TODO: replace `user` and `pass` values from <https://forwardemail.net>
