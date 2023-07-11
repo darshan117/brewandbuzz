@@ -64,7 +64,7 @@ app.post("/submit-form", (req, res) => {
   email_id = req.body.emailid;
   phone_number= req.body.mobile_number;
   // Extract the slider values from the request body
-  console.log(name_client+" " +emailid); // Do whatever you want with the data
+  console.log(name_client+" " +email_id); // Do whatever you want with the data
   
   res.sendStatus(200); 
 });
@@ -112,9 +112,10 @@ const sheet = await doc.addSheet({ headerValues: ['Service', 'Qty'],title: `${na
     // Do something with the value
     // ...
   };
+await sheet.addRow({Service:" ",Qty:""})
+await sheet.addRow({Service:"Form Details ",Qty:""})
 await sheet.addRow({Service:"EmailId ",Qty:`${email_id}`})
-await sheet.addRow({Service:"phone ",Qty:`${phone_number}`})
-
+await sheet.addRow({Service:"Phone Number ",Qty:`${phone_number}`})
 await sheet.addRow({Service:"Name",Qty:`${name_client}`})
   console.log(tableData)
 
@@ -214,7 +215,7 @@ var emailBody = mailGenerator.generatePlaintext(email);
 
 const mailOptions = {
     from: '"Brew and buzz" <darshanga1kw4d17@gmail.com>', // sender address
-    to: `${emailid},darshangaikwad117@gmail.com`, // list of receivers
+    to: `${email_id},darshangaikwad117@gmail.com`, // list of receivers
     subject: "This is a Test Mail ✔", // Subject line
     text: "Quotation", // plain text body
     html: newemail, // html body
